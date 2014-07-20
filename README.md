@@ -8,6 +8,7 @@ Ansible role for install [phpStorm](http://www.jetbrains.com/phpstorm/).
 
     phpstorm_version: 7.1.3
     phpstorm_install_dir: /opt
+    phpstorm_bin: /usr/local/bin/phpstorm
 
 ## Example Playbook
 
