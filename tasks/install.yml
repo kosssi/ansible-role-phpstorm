@@ -1,0 +1,26 @@
+---
+
+- name: Download phpStorm
+  shell:
+    wget "http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz"
+    creates="{{ phpstorm_dir }}.tar.gz"
+
+- name: Move phpStorm
+  shell:
+    mv PhpStorm-{{ phpstorm_version }}.tar.gz {{ phpstorm_dir }}.tar.gz
+    creates="{{ phpstorm_dir }}.tar.gz"
+
+- name: Decompress phpStorm
+  shell:
+    tar xvfz {{ phpstorm_dir }}.tar.gz -C {{ phpstorm_install_dir }}
+    creates="{{ phpstorm_dir }}"
+
+- name: Move phpStorm
+  shell:
+    mv {{ phpstorm_install_dir }}/PhpStorm-* {{ phpstorm_dir }}
+    creates="{{ phpstorm_dir }}"
+
+- name: Create symlink
+  shell:
+    ln -s {{ phpstorm_dir }}/bin/phpstorm.sh {{ phpstorm_bin }}
+    creates="{{ phpstorm_bin }}"
