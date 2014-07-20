@@ -1,0 +1,11 @@
+---
+
+- name: Get stat of phpstorm
+  stat:
+    path="{{ phpstorm_bin }}"
+  register: phpstorm_stat
+
+- name: Test if phpstorm is executable
+  fail:
+    msg="{{ phpstorm_bin }} isn't executable"
+  when: phpstorm_stat.stat.xgrp != true

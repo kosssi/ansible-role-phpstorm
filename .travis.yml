@@ -11,7 +11,7 @@ install:
 script:
   - cd tests
   - ansible-playbook -i inventory playbook.yml --syntax-check
-  - ansible-playbook -i inventory playbook.yml --connection=local --sudo
+  - ansible-playbook -i inventory playbook.yml --connection=local --sudo -vvvv
   - >
     ansible-playbook -i inventory playbook.yml --connection=local --sudo
     | grep -q 'changed=0.*unreachable=0.*failed=0'
