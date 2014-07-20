@@ -13,7 +13,7 @@ Ansible role for install [phpStorm](http://www.jetbrains.com/phpstorm/).
 ## Example Playbook
 
     roles:
-      - { role: kosssi.composer }
+      - { role: kosssi.phpstorm }
 
 ## License
 
