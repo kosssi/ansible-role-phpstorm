@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kosssi/ansible-role-phpstorm.svg?branch=master)](https://travis-ci.org/kosssi/ansible-role-phpstorm)
 
-Ansible role for install [phpStorm](http://www.jetbrains.com/phpstorm/).
+Ansible role to install [phpStorm](http://www.jetbrains.com/phpstorm/).
 
 ## Role Defaults Variables
 
