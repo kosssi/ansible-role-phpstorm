@@ -2,12 +2,7 @@
 
 - name: Download phpStorm
   shell:
-    wget "http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz"
-    creates="{{ phpstorm_dir }}.tar.gz"
-
-- name: Move phpStorm
-  shell:
-    mv PhpStorm-{{ phpstorm_version }}.tar.gz {{ phpstorm_dir }}.tar.gz
+    wget "http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz" --output-document="{{ phpstorm_dir }}.tar.gz"
     creates="{{ phpstorm_dir }}.tar.gz"
 
 - name: Decompress phpStorm
