@@ -1,16 +1,16 @@
 ---
 
-- name: Download phpStorm
+- name: Download phpStorm archive
   shell:
-    wget "http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz" --output-document="{{ phpstorm_dir }}.tar.gz"
-    creates="{{ phpstorm_dir }}.tar.gz"
-
-- name: Decompress phpStorm
-  shell:
-    tar xvfz {{ phpstorm_dir }}.tar.gz -C {{ phpstorm_install_dir }}
+    wget "http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz" --output-document="{{ phpstorm_archive }}"
     creates="{{ phpstorm_dir }}"
 
-- name: Move phpStorm
+- name: Decompress phpStorm archive
+  shell:
+    tar xvfz {{ phpstorm_archive }} -C {{ phpstorm_install_dir }}
+    creates="{{ phpstorm_dir }}"
+
+- name: Move phpStorm folder
   shell:
     mv {{ phpstorm_install_dir }}/PhpStorm-* {{ phpstorm_dir }}
     creates="{{ phpstorm_dir }}"
@@ -19,3 +19,7 @@
   shell:
     ln -s {{ phpstorm_dir }}/bin/phpstorm.sh {{ phpstorm_bin }}
     creates="{{ phpstorm_bin }}"
+
+- name: Remove phpStorm archive
+  command: rm {{ phpstorm_archive }}
+    removes="{{ phpstorm_archive }}"
