@@ -1,3 +1,4 @@
 ---
 
 phpstorm_dir: "{{ phpstorm_install_dir }}/phpstorm-{{ phpstorm_version }}"
+phpstorm_archive: "{{ phpstorm_dir }}.tar.gz"
