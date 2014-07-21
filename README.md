@@ -15,6 +15,13 @@ Ansible role to install [phpStorm](http://www.jetbrains.com/phpstorm/).
     roles:
       - { role: kosssi.phpstorm }
 
+## Vagrant
+
+If you have vagrant, you can test this role:
+
+    cd tests
+    vagrant up
+
 ## License
 
 MIT
