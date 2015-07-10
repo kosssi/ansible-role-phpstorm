@@ -1,14 +1,21 @@
 ---
 
+- name: Test if folder exist
+  stat:
+    path={{ phpstorm_dir }}
+  register: phpstorm_exist
+
 - name: Download phpStorm archive
-  shell:
-    wget "http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz" --output-document="{{ phpstorm_archive }}"
-    creates="{{ phpstorm_dir }}"
+  get_url:
+    url=http://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.tar.gz
+    dest={{ phpstorm_archive }}
+  when: phpstorm_exist.stat.exists == False
 
 - name: Decompress phpStorm archive
-  shell:
-    tar xvfz {{ phpstorm_archive }} -C {{ phpstorm_install_dir }}
-    creates="{{ phpstorm_dir }}"
+  unarchive:
+    src={{ phpstorm_archive }}
+    dest={{ phpstorm_install_dir }}
+  when: phpstorm_exist.stat.exists == False
 
 - name: Move phpStorm folder
   shell:
@@ -16,10 +23,12 @@
     creates="{{ phpstorm_dir }}"
 
 - name: Create symlink
-  shell:
-    ln -fs {{ phpstorm_dir }}/bin/phpstorm.sh {{ phpstorm_bin }}
-    creates="{{ phpstorm_bin }}"
+  file:
+    src={{ phpstorm_dir }}/bin/phpstorm.sh
+    dest={{ phpstorm_bin }}
+    state=link
 
 - name: Remove phpStorm archive
-  command: rm {{ phpstorm_archive }}
-    removes="{{ phpstorm_archive }}"
+  file:
+    path={{ phpstorm_archive }}
+    state=absent
