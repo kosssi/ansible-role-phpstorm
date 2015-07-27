@@ -3,7 +3,7 @@
 galaxy_info:
   author: kosssi
   description: Install phpStorm.
-  min_ansible_version: 1.4
+  min_ansible_version: 1.5
   license: MIT
   platforms:
   - name: Ubuntu
