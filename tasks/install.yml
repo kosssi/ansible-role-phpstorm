@@ -15,6 +15,7 @@
   unarchive:
     src={{ phpstorm_archive }}
     dest={{ phpstorm_install_dir }}
+    copy=no
   when: phpstorm_exist.stat.exists == False
 
 - name: Move phpStorm folder
