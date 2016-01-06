@@ -8,7 +8,7 @@ Ansible role to install [phpStorm](http://www.jetbrains.com/phpstorm/).
 
 ## Role Defaults Variables
 
-    phpstorm_version: 9.0
+    phpstorm_version: 10.0.2
     phpstorm_install_dir: /opt
     phpstorm_bin: /usr/local/bin/phpstorm
 
